@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ -n "$(pgrep kscreenlocker)" ]; then
-  /usr/sbin/pm-suspend
-fi
