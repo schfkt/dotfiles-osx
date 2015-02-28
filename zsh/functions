@@ -1,14 +1,5 @@
 # vim: ft=zsh
 
-# nvm loader
-function load_nvm() {
-  if ! type nvm &> /dev/null; then
-    [[ -s /home/schfkt/.nvm/nvm.sh ]] && . /home/schfkt/.nvm/nvm.sh
-  else
-    echo "nvm is already loaded"
-  fi
-}
-
 # Source: http://unix.stackexchange.com/questions/6/what-are-your-favorite-command-line-features-or-tricks/122#122
 # Usage .. [n]
 function .. (){

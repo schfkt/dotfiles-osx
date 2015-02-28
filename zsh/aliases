@@ -1,5 +1,4 @@
 # disable some shit from oh-my-zsh
-unalias ..
 unalias ll
 unalias grhh
 
@@ -11,40 +10,20 @@ alias gsh='git stash'
 alias gpo='git push origin'
 alias gau='git add -u'
 alias gaa='git add -A'
-alias gk='gitk --all --branches &'
-
-# package management
-alias ai='sudo apt-get install'
-alias au='sudo apt-get update'
-alias arm='sudo apt-get remove'
-alias ac='apt-cache'
-alias acs='apt-cache --names-only search'
-alias repo='sudo add-apt-repository'
-alias autorm='sudo apt-get autoremove'
-alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+alias gx='gitx --all'
 
 # misc
-alias svc='sudo service'
 alias pd="cd -"
-alias dl='dolphin . &'
 alias plf='pgrep -lf'
 alias vg='vagrant'
 alias ll='ls -lh'
 alias gs='false' # fuck it
-alias up='nmcli con up id'
-alias down='nmcli con down id'
-
-# download file by link from clipboard
-alias dw='xclip -o | xargs wget'
 
 # tmux
 alias tls='tmux ls'
 alias ta='tmux attach-session -t'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
-
-# vim
-alias v='vim'
 
 # ruby/rails and friends
 alias b='bundle'

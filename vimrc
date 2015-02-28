@@ -50,6 +50,7 @@ set tabstop=2
 set expandtab
 set smarttab
 set encoding=utf-8
+set relativenumber
 set number
 set hidden " Allows to switch buffers without saving changes
 set autoread " Auto reload if file saved externally
@@ -85,6 +86,9 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+" Fix for backspace in os x
+set backspace=indent,eol,start
 
 
 " -----------------------------------------------------------------------------
@@ -151,7 +155,6 @@ nnoremap <leader>n :noh<CR>
 " -----------------------------------------------------------------------------
 
 let g:airline_theme = 'luna'
-let g:airline_powerline_fonts = 1
 
 " No lag when leaving insert mode with vim-airline plugin activated
 set ttimeoutlen=50
