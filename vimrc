@@ -1,10 +1,6 @@
 set nocompatible
 filetype off
 
-" Change leader to a comma
-" This has to be set before vundle starts loading all the plugins
-let mapleader=","
-
 
 " -----------------------------------------------------------------------------
 " Bundles
@@ -15,7 +11,6 @@ call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
@@ -28,12 +23,12 @@ Plugin 'rking/ag.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'sickill/vim-pasta'
-Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'moll/vim-node'
-Plugin 'dag/vim2hs'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -134,17 +129,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Remap : to ; in normal mode
-nnoremap ; :
-
 " Disable arrow keys (:
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-nnoremap E ea
-nnoremap B bi
 
 " Hide search highlighting
 nnoremap <leader>n :noh<CR>
@@ -154,7 +143,9 @@ nnoremap <leader>n :noh<CR>
 " Settings for plugins
 " -----------------------------------------------------------------------------
 
-let g:airline_theme = 'luna'
+let g:airline_theme = 'solarized'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " No lag when leaving insert mode with vim-airline plugin activated
 set ttimeoutlen=50
