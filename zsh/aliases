@@ -18,6 +18,7 @@ alias plf='pgrep -lf'
 alias vg='vagrant'
 alias ll='ls -lh'
 alias gs='false' # fuck it
+alias tailf='tail -f'
 
 # tmux
 alias tls='tmux ls'

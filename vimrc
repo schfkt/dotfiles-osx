@@ -3,7 +3,7 @@ filetype off
 
 
 " -----------------------------------------------------------------------------
-" Bundles
+" Plugins
 " -----------------------------------------------------------------------------
 
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -26,9 +26,10 @@ Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'moll/vim-node'
-Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-rbenv'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -39,7 +40,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 filetype plugin on
 filetype indent on
-syntax off
+syntax on
 set shiftwidth=2
 set tabstop=2
 set expandtab
@@ -138,6 +139,13 @@ noremap <Right> <NOP>
 " Hide search highlighting
 nnoremap <leader>n :noh<CR>
 
+" vim-fugitive
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gl :Glog --<cr>
+
+" ruby/rails
+nnoremap <leader>r :Rake!<cr>
 
 " -----------------------------------------------------------------------------
 " Settings for plugins
