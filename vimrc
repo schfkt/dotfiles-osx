@@ -30,6 +30,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -86,6 +87,9 @@ set undodir=~/.vim/undo//
 " Fix for backspace in os x
 set backspace=indent,eol,start
 
+" Regenerate tags automatically
+au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
+
 
 " -----------------------------------------------------------------------------
 " Status line
@@ -119,9 +123,9 @@ hi clear SignColumn
 " -----------------------------------------------------------------------------
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
+nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>a :Ag<Space>
 
 " Quicker window movement
@@ -170,6 +174,5 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:tagbar_autofocus = 1
 
 " Syntastic
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_always_populate_loc_list = 1
 
