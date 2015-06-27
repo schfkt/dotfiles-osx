@@ -10,7 +10,8 @@ alias gsh='git stash'
 alias gpo='git push origin'
 alias gau='git add -u'
 alias gaa='git add -A'
-alias gx='gitx --all'
+alias gdl='git diff HEAD~1..HEAD'
+alias gdc='git diff --cached'
 
 # misc
 alias pd="cd -"
