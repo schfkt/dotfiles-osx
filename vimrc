@@ -31,6 +31,7 @@ Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-bundler'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -167,8 +168,6 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " Ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
-
-let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Auto focus on tagbar window
 let g:tagbar_autofocus = 1

@@ -12,6 +12,7 @@ alias gau='git add -u'
 alias gaa='git add -A'
 alias gdl='git diff HEAD~1..HEAD'
 alias gdc='git diff --cached'
+alias gpuoh='git push -u origin HEAD'
 
 # misc
 alias pd="cd -"
@@ -30,9 +31,9 @@ alias tk='tmux kill-session -t'
 # ruby/rails and friends
 alias b='bundle'
 alias be='bundle exec'
-alias r='be rails'
 alias rc='be rails c'
 alias rg='be rails g'
+alias rs='be rails s'
 alias rr='be rake routes'
 alias cw='coffee -cbw --output . coffee'
 alias cuke='cucumber -f html -b'
