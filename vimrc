@@ -32,6 +32,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-bundler'
+Plugin 'jpalardy/vim-slime'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -174,4 +175,8 @@ let g:tagbar_autofocus = 1
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
+
+" vim-slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
 

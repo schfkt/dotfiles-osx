@@ -8,5 +8,5 @@ precmd() {
 
 setopt prompt_subst
 PROMPT=$'
-%~ $vcs_info_msg_0_=> '
+ %F{166}%~%{${reset_color}%} $vcs_info_msg_0_%F{70}❯❯❯%{${reset_color}%} '
 
