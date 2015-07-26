@@ -21,7 +21,6 @@ Plugin 'mhinz/vim-signify'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'rking/ag.vim'
 Plugin 'slim-template/vim-slim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
@@ -90,7 +89,7 @@ set undodir=~/.vim/undo//
 set backspace=indent,eol,start
 
 " Regenerate tags automatically
-au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
+" au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
 
 
 " -----------------------------------------------------------------------------
