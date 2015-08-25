@@ -91,6 +91,11 @@ set backspace=indent,eol,start
 " Regenerate tags automatically
 " au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
 
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
+
+" Don’t show the intro message when starting Vim
+set shortmess=atI
 
 " -----------------------------------------------------------------------------
 " Status line
@@ -125,6 +130,7 @@ hi clear SignColumn
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
+nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>a :Ag<Space>
@@ -174,8 +180,26 @@ let g:tagbar_autofocus = 1
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_javascript_checkers = ['jshint']
 
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
+
+
+" -----------------------------------------------------------------------------
+" GUI specific shit
+" -----------------------------------------------------------------------------
+if has('gui_running')
+  set guifont=Monaco:h13
+
+  " Turn off all GUI shit (menu bar, scrollbars, etc)
+  set guioptions=
+
+  " Disable mouse
+  set mouse=
+  map <ScrollWheelUp> <nop>
+  map <ScrollWheelDown> <nop>
+endif
 
