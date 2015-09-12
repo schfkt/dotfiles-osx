@@ -32,6 +32,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-bundler'
 Plugin 'jpalardy/vim-slime'
+Plugin 'tpope/vim-haml'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -43,6 +44,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 filetype plugin on
 filetype indent on
 syntax on
+
 set shiftwidth=2
 set tabstop=2
 set expandtab
@@ -58,6 +60,7 @@ set ignorecase " Ignore case when searching
 set colorcolumn=80 " Ruler at 80th column
 set splitbelow
 set splitright
+set history=1000
 
 " Write with sudo
 cnoremap w!! w !sudo tee % >/dev/null
@@ -87,9 +90,6 @@ set undodir=~/.vim/undo//
 
 " Fix for backspace in os x
 set backspace=indent,eol,start
-
-" Regenerate tags automatically
-" au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
 
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
@@ -125,8 +125,13 @@ hi clear SignColumn
 
 
 " -----------------------------------------------------------------------------
-" Hotkeys
+" Mappings
 " -----------------------------------------------------------------------------
+
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
@@ -134,6 +139,7 @@ nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>a :Ag<Space>
+nnoremap <Leader>w :w<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -141,7 +147,17 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Disable arrow keys (:
+" Allow moving with ctrl+j/k in insert mode
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" Disable arrow keys
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -154,6 +170,7 @@ nnoremap <leader>n :noh<CR>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
+nnoremap <leader>gd :Gdiff<cr>
 
 " ruby/rails
 nnoremap <leader>r :Rake!<cr>
