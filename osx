@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Based on these guides:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+# https://gist.github.com/brandonb927/3195465
+#
+# For more details read this article (in russian):
+# https://schfkt.github.io/2015/08/30/os-x-no-more-shit.html
+
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.universalaccess reduceTransparency -bool true
+defaults write com.apple.screencapture disable-shadow -bool true
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+sudo tmutil disablelocal
+
