@@ -33,6 +33,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-bundler'
 Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-haml'
+Plugin 'jnurmine/Zenburn'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -118,9 +119,9 @@ set statusline+=%<%P                         " file position
 " -----------------------------------------------------------------------------
 
 set t_Co=256
-colorscheme solarized
+colorscheme zenburn
 set bg=light
-hi ColorColumn ctermbg=7
+hi ColorColumn ctermbg=235
 hi clear SignColumn
 
 
@@ -134,12 +135,14 @@ hi clear SignColumn
 :command Q q
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <leader>t :CtrlPTag<CR>
-nnoremap <leader>a :Ag<Space>
+nnoremap <leader>a :Ag<CR>
+nnoremap <leader>f :Ag<Space>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>r :.,$s/\<<C-r><C-w>\>//gc<left><left><left>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -172,14 +175,11 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" ruby/rails
-nnoremap <leader>r :Rake!<cr>
-
 " -----------------------------------------------------------------------------
 " Settings for plugins
 " -----------------------------------------------------------------------------
 
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'zenburn'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 

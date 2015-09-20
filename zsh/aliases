@@ -22,6 +22,7 @@ alias ll='ls -lh'
 alias gs='false' # fuck it
 alias tailf='tail -f'
 alias v='vim'
+alias m='mvim'
 
 # tmux
 alias tls='tmux ls'

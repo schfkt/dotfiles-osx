@@ -21,5 +21,6 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write com.apple.dock no-bouncing -bool TRUE
 sudo tmutil disablelocal
 
