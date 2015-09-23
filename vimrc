@@ -21,7 +21,6 @@ Plugin 'mhinz/vim-signify'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'rking/ag.vim'
 Plugin 'slim-template/vim-slim'
-Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'moll/vim-node'
@@ -34,6 +33,8 @@ Plugin 'tpope/vim-bundler'
 Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-haml'
 Plugin 'jnurmine/Zenburn'
+Plugin 'pangloss/vim-javascript'
+Plugin 'junegunn/goyo.vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -84,6 +85,9 @@ set nofoldenable
 " Disable automatic comment insertion
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
+" Generate tags on file save
+au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
+
 " Save that fuckin garbage in one place
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -97,6 +101,11 @@ set scrolloff=3
 
 " Don’t show the intro message when starting Vim
 set shortmess=atI
+
+" Show trailing whritespaces
+set list
+set listchars=trail:·
+
 
 " -----------------------------------------------------------------------------
 " Status line
@@ -120,7 +129,7 @@ set statusline+=%<%P                         " file position
 
 set t_Co=256
 colorscheme zenburn
-set bg=light
+set bg=dark
 hi ColorColumn ctermbg=235
 hi clear SignColumn
 
@@ -135,13 +144,12 @@ hi clear SignColumn
 :command Q q
 
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
-nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>a :Ag<CR>
-nnoremap <leader>f :Ag<Space>
+nnoremap <leader>f :Ag ""<left>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
 nnoremap <Leader>r :.,$s/\<<C-r><C-w>\>//gc<left><left><left>
 
 " Quicker window movement
@@ -175,6 +183,9 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
+" bye bye ex mode
+nnoremap Q <nop>
+
 " -----------------------------------------------------------------------------
 " Settings for plugins
 " -----------------------------------------------------------------------------
@@ -195,6 +206,16 @@ let g:ctrlp_use_caching = 0
 " Auto focus on tagbar window
 let g:tagbar_autofocus = 1
 
+" Fixes for js tags
+let g:tagbar_type_javascript = {
+  \ 'ctagstype' : 'JavaScript',
+  \ 'kinds'     : [
+      \ 'o:objects',
+      \ 'f:functions',
+      \ 'a:arrays'
+  \ ]
+\ }
+
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -203,6 +224,9 @@ let g:syntastic_javascript_checkers = ['jshint']
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
+
+" ag.vim
+let g:ag_qhandler="copen"
 
 
 " -----------------------------------------------------------------------------

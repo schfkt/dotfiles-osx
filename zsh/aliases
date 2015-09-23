@@ -29,7 +29,7 @@ alias tls='tmux ls'
 alias ta='tmux attach-session -t'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
-alias tms='tmuxinator start'
+alias tms='mux start'
 
 # ruby/rails and friends
 alias b='bundle'

@@ -6,3 +6,8 @@
 --exclude=node_modules
 --exclude=log
 --exclude=*.min.js
+--regex-JavaScript=/^var[ \t]+([a-zA-Z0-9._$]+) = \[/\1/a,array/
+--regex-JavaScript=/^var[ \t]+([a-zA-Z0-9._$]+) = \{/\1/o,object/
+--regex-JavaScript=/^var[ \t]+([a-zA-Z0-9._$]+) = (^{^\[)+/\1/r,var/
+--regex-JavaScript=/^var[ \t]+([A-Za-z0-9._$]+)[ \t]*=[ \t]*[A-Za-z0-9_$]+.extend/\1/f,function/
+--regex-JavaScript=/^[ \t]*([A-Za-z0-9_$]*\.)*([A-Za-z0-9_$]+)[ \t]*[:=][ \t]*function/\2/f,function/
