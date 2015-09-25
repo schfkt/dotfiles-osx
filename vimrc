@@ -35,6 +35,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'jnurmine/Zenburn'
 Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/goyo.vim'
+Plugin 'tpope/vim-dispatch'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -86,7 +87,7 @@ set nofoldenable
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Generate tags on file save
-au BufWritePost *.js,*.rb silent! !ctags 2> /dev/null &
+au BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
 
 " Save that fuckin garbage in one place
 set backupdir=~/.vim/backup//
@@ -224,9 +225,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
-
-" ag.vim
-let g:ag_qhandler="copen"
 
 
 " -----------------------------------------------------------------------------
