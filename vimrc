@@ -129,9 +129,9 @@ set statusline+=%<%P                         " file position
 " -----------------------------------------------------------------------------
 
 set t_Co=256
-colorscheme zenburn
-set bg=dark
-hi ColorColumn ctermbg=235
+colorscheme solarized
+set bg=light
+hi ColorColumn ctermbg=7
 hi clear SignColumn
 
 
@@ -191,7 +191,7 @@ nnoremap Q <nop>
 " Settings for plugins
 " -----------------------------------------------------------------------------
 
-let g:airline_theme = 'zenburn'
+let g:airline_theme = 'solarized'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
