@@ -2,9 +2,9 @@ set nocompatible
 filetype off
 
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Plugins
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
@@ -36,13 +36,14 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-dispatch'
+Plugin 'sjl/gundo.vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " General settings
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 filetype plugin on
 filetype indent on
@@ -60,10 +61,14 @@ set autoread " Auto reload if file saved externally
 set hlsearch " Highlight search terms
 set incsearch " Show search matches as you type
 set ignorecase " Ignore case when searching
-set colorcolumn=80 " Ruler at 80th column
+set colorcolumn=81 " Ruler at the 81th column
 set splitbelow
 set splitright
 set history=1000
+
+" Undo
+set undofile        " Enable persistent undo history
+set undolevels=5000 " Store up to 5000 undo entries
 
 " Write with sudo
 cnoremap w!! w !sudo tee % >/dev/null
@@ -77,6 +82,8 @@ set wildignore+=*/node_modules/*
 " Allow to use Russian keymap in normal mode
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+" Commands completion
+set wildmode=list:longest,full
 set wildmenu
 
 " Turn off folding
@@ -108,9 +115,9 @@ set list
 set listchars=trail:·
 
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Status line
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 set laststatus=2
 set statusline=
@@ -124,9 +131,9 @@ set statusline+=%-14(%l,%c%V%)               " line, character
 set statusline+=%<%P                         " file position
 
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Colors
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 set t_Co=256
 colorscheme solarized
@@ -135,14 +142,15 @@ hi ColorColumn ctermbg=7
 hi clear SignColumn
 
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Mappings
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
+:command Qa qa
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
@@ -152,6 +160,7 @@ nnoremap <leader>a :Ag<CR>
 nnoremap <leader>f :Ag ""<left>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>r :.,$s/\<<C-r><C-w>\>//gc<left><left><left>
+nnoremap <F5> :GundoToggle<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -176,7 +185,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Hide search highlighting
-nnoremap <leader>n :noh<CR>
+nmap <silent> <BS> :noh<CR>
 
 " vim-fugitive
 nnoremap <leader>gs :Gstatus<cr>
@@ -187,9 +196,9 @@ nnoremap <leader>gd :Gdiff<cr>
 " bye bye ex mode
 nnoremap Q <nop>
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Settings for plugins
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 let g:airline_theme = 'solarized'
 let g:airline_left_sep=''
@@ -221,15 +230,19 @@ let g:tagbar_type_javascript = {
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = []
 
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
 
+" gundo.vim
+let g:gundo_right = 1
+let g:gundo_preview_bottom = 1
 
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " GUI specific shit
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 if has('gui_running')
   set guifont=Monaco:h13
 
