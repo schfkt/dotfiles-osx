@@ -37,6 +37,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'sjl/gundo.vim'
+Plugin 'godlygeek/tabular'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -45,36 +46,39 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " General settings
 " ------------------------------------------------------------------------------
 
-filetype plugin on
-filetype indent on
-syntax on
+filetype plugin on  " Load filetype-specific plugin files
+filetype indent on  " Load filetype-specific indent files
+syntax on           " Enable syntax highlighting
 
-set shiftwidth=2
-set tabstop=2
-set expandtab
-set smarttab
 set encoding=utf-8
-set relativenumber
-set number
-set hidden " Allows to switch buffers without saving changes
-set autoread " Auto reload if file saved externally
-set hlsearch " Highlight search terms
-set incsearch " Show search matches as you type
-set ignorecase " Ignore case when searching
-set colorcolumn=81 " Ruler at the 81th column
+
+set shiftwidth=2    " Number of spaces to use for each step of (auto)indent
+set tabstop=2       " Number of visual spaces per TAB
+set expandtab       " Tabs are spaces
+set smarttab
+
+set number          " Show line numbers
+set relativenumber  " But show them relative to the current line
+set hidden          " Allows to switch buffers without saving changes
+set autoread        " Auto reload if file saved externally
+
+set hlsearch        " Highlight search terms
+set incsearch       " Show search matches as you type
+set ignorecase      " Ignore case when searching
+
+set colorcolumn=81  " Ruler at the 81th column
+set cursorline      " Highlight current line
+
 set splitbelow
 set splitright
-set history=1000
 
-" Undo
+set history=1000    " How many commands to store in the history
+
 set undofile        " Enable persistent undo history
 set undolevels=5000 " Store up to 5000 undo entries
 
-" Write with sudo
-cnoremap w!! w !sudo tee % >/dev/null
-
-" Trim whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+set wildmenu        " Visual autocomplete for command menu
+set lazyredraw      " Redraw only when it is really needed
 
 " Ignore node_modules folders
 set wildignore+=*/node_modules/*
@@ -82,21 +86,12 @@ set wildignore+=*/node_modules/*
 " Allow to use Russian keymap in normal mode
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-" Commands completion
-set wildmode=list:longest,full
-set wildmenu
 
 " Turn off folding
 set foldmethod=manual
 set nofoldenable
 
-" Disable automatic comment insertion
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
-" Generate tags on file save
-au BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
-
-" Save that fuckin garbage in one place
+" Where to store backups, swap and undo files
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -138,8 +133,9 @@ set statusline+=%<%P                         " file position
 set t_Co=256
 colorscheme solarized
 set bg=light
-hi ColorColumn ctermbg=7
-hi clear SignColumn
+highlight ColorColumn ctermbg=7
+highlight clear SignColumn
+highlight CursorLineNr ctermfg=12 ctermbg=7
 
 
 " ------------------------------------------------------------------------------
@@ -168,12 +164,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Allow moving with ctrl+j/k in insert mode
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
 " Disable arrow keys
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
@@ -193,13 +183,39 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" bye bye ex mode
+" Bye bye ex mode
 nnoremap Q <nop>
+
+" Highlight last inserted text
+nnoremap gV `[v`]
+
+" Write with sudo
+cnoremap w!! w !sudo tee % >/dev/null
+
+
+" ------------------------------------------------------------------------------
+" Autogroups
+" ------------------------------------------------------------------------------
+
+augroup configgroup
+  autocmd!
+
+  " Trim whitespaces on save
+  autocmd BufWritePre * :%s/\s\+$//e
+
+  " Disable automatic comment insertion
+  autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+  " Generate tags on file save
+  autocmd BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
+augroup END
+
 
 " ------------------------------------------------------------------------------
 " Settings for plugins
 " ------------------------------------------------------------------------------
 
+" vim-airline theme settings
 let g:airline_theme = 'solarized'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -207,11 +223,10 @@ let g:airline_right_sep=''
 " No lag when leaving insert mode with vim-airline plugin activated
 set ttimeoutlen=50
 
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+" CtrlP
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-" Ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path = 0
 
 " Auto focus on tagbar window
 let g:tagbar_autofocus = 1
