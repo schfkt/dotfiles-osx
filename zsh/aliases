@@ -19,14 +19,10 @@ alias pd="cd -"
 alias plf='pgrep -lf'
 alias vg='vagrant'
 alias ll='ls -lh'
-alias gs='false' # fuck it
+alias gs='false'
 alias tailf='tail -f'
 alias v='vim'
 alias m='mvim'
-
-# the following alias makes gtypist to run with english locale
-# (some fucking "smart" piece of shit decided that this is so cool to translate
-# hotkeys to russian too which makes gtypist almost unusable)
 alias gtypist='LANG=C gtypist'
 
 # tmux
