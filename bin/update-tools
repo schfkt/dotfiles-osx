@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo
+echo Updating homebrew and homebrew-cask...
+brew update
+brew upgrade brew-cask
+brew cleanup
+brew cask cleanup
+
+echo
+echo Updating libraries in dotfiles...
+cd ~/dotfiles
+git submodule foreach git pull origin master
+
+echo
+echo Updating rbenv and plugins...
+cd ~/.rbenv
+git pull
+cd plugins/ruby-build
+git pull
+
+echo
+echo Updating nvm...
+cd ~/.nvm
+git fetch
+git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+
+cd
+echo
+echo Done
+
