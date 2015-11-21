@@ -35,12 +35,20 @@ function gcor() {
   if [[ -n $1 ]] && [[ -n $2 ]]; then
     local message="[refs #$1] $2"
     git commit -m $message
+  elif [[ -n $1 ]]; then
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+    if [[ $branch =~ "[1-9][0-9]*" ]]; then
+      local message="[refs #$MATCH] $1"
+      git commit -m $message
+    else
+      echo "Error: current branch name doesn't contain any issue id"
+    fi
   else
-    echo How to use:
+    echo "How to use:"
     echo "  gcor <issue id> <message>"
     echo
-    echo Example:
-    echo "  gcor 42 'Add Readme'"
+    echo "Or, if the current branch name contains an issue id:"
+    echo "  gcor <message>"
   fi
 }
 
