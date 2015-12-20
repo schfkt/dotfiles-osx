@@ -4,7 +4,7 @@ unalias grhh
 
 # git
 alias gcom='git commit -m'
-alias gh='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias gh='git log --graph --pretty=format:"%Cred%h%Creset %Cgreen(%ci) %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s " --abbrev-commit'
 alias ghh='gh | head'
 alias gsh='git stash'
 alias gpo='git push origin'

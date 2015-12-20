@@ -32,12 +32,12 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-bundler'
 Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-haml'
-Plugin 'jnurmine/Zenburn'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'ternjs/tern_for_vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -75,7 +75,7 @@ set splitright
 set history=1000    " How many commands to store in the history
 
 set undofile        " Enable persistent undo history
-set undolevels=5000 " Store up to 5000 undo entries
+set undolevels=1000 " Store up to 1000 undo entries
 
 set wildmenu        " Visual autocomplete for command menu
 set lazyredraw      " Redraw only when it is really needed
@@ -105,10 +105,12 @@ set scrolloff=3
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 
-" Show trailing whritespaces
+" Show tabs and trailing whritespaces
 set list
-set listchars=trail:·
+set listchars=tab:▸\ ,trail:·
 
+" Don't show preview window with autocompletion
+set completeopt-=preview
 
 " ------------------------------------------------------------------------------
 " Status line
@@ -151,7 +153,6 @@ highlight CursorLineNr ctermfg=12 ctermbg=7
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
-nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>f :Ag ""<left>
 nnoremap <Leader>w :w<CR>
@@ -182,6 +183,11 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
 nnoremap <leader>gd :Gdiff<cr>
+
+" ternjs
+nnoremap <leader>td :TernDef<cr>
+nnoremap <leader>tr :TernRename<cr>
+nnoremap <leader>tR :TernRefs<cr>
 
 " Bye bye ex mode
 nnoremap Q <nop>
@@ -244,6 +250,7 @@ let g:tagbar_type_javascript = {
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = []
 
