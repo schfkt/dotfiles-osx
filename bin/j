@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+def parse_config
+  path = File.join(File.expand_path('~'), 'etc/j.yml')
+  YAML.load_file(path)
+end
+
+def config_for_server(server)
+  config = parse_config[server]
+  abort "No config for #{server} server found" unless config
+  config
+end
+
+def ssh(host, is_gateway)
+  if is_gateway
+    "ssh -A #{host} -t"
+  else
+    "ssh #{host}"
+  end
+end
+
+def prepare_command(server_config)
+  server_command = server_config.fetch('cmd', 'screen -dR')
+  *gateways, target = server_config.fetch('path')
+  path = gateways.map { |gateway| ssh(gateway, true) } + [ssh(target, false)]
+  "#{path.join(' ')} -t #{server_command}"
+end
+
+def run_command(config)
+  command = prepare_command(config)
+  puts ">> #{command}"
+  system command
+end
+
+run_command config_for_server(ARGV.shift)
