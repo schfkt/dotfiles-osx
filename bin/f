@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+if ARGV.size < 2
+  puts 'How to use:'
+  puts "   #{File.basename(__FILE__)} 12345 some cool new feature"
+  abort
+end
+
+branch_name = "feature/#{ARGV.join('_')}"
+cmd = "git checkout -b #{branch_name}"
+puts ">> #{cmd}"
+system cmd
+

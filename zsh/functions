@@ -75,3 +75,9 @@ function print_colors() {
   done
 }
 
+# Convenient wrapper around bin/j sript
+function sj() {
+  echo "Select the server:"
+  j $(j | selecta)
+}
+

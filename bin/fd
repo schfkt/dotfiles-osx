@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+trap 'SIGINT' do
+  puts 'Cancelled...'
+end
+
+def remove_local_branch(branch)
+  cmd = "git branch -D #{branch}"
+  puts ">> #{cmd}"
+  system cmd
+end
+
+def remove_remote_branch(branch)
+  cmd = "git push origin :#{branch}"
+  puts ">> #{cmd}"
+  system cmd
+end
+
+branch = `git branch --list feature/* | selecta`.strip
+puts "You are going to delete branch '#{branch}' completely. Continue? (yes/no)"
+if gets.chomp == 'yes'
+  remove_local_branch branch
+  remove_remote_branch branch
+else
+  puts 'Cancelled...'
+end
+

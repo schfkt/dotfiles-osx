@@ -34,4 +34,10 @@ def run_command(config)
   system command
 end
 
-run_command config_for_server(ARGV.shift)
+if ARGV.empty?
+  parse_config.keys.each { |server| puts server }
+else
+  config = config_for_server(ARGV.shift)
+  run_command(config)
+end
+

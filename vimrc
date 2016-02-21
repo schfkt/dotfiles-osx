@@ -38,6 +38,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -249,7 +250,7 @@ let g:tagbar_type_javascript = {
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_auto_jump = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = []
@@ -261,6 +262,9 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
 " gundo.vim
 let g:gundo_right = 1
 let g:gundo_preview_bottom = 1
+
+" editorconfig-vim
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " ------------------------------------------------------------------------------
 " GUI specific shit

@@ -13,6 +13,7 @@ alias gaa='git add -A'
 alias gdl='git diff HEAD~1..HEAD'
 alias gdc='git diff --cached'
 alias gpuoh='git push -u origin HEAD'
+alias gco='git branch | cut -c 3- | selecta | xargs git checkout'
 
 # misc
 alias pd="cd -"

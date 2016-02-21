@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+trap 'SIGINT' do
+  puts 'Cancelled...'
+end
+
+branch = `git branch --list feature/* | selecta`.strip
+cmd = "git merge --no-ff #{branch}"
+puts ">> #{cmd}"
+system cmd
+
