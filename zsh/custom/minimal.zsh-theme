@@ -1,6 +1,6 @@
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "[%b] "
+zstyle ':vcs_info:git*' formats "%F{4}[%b]%{${reset_color}%} "
 
 precmd() {
     vcs_info
@@ -8,5 +8,5 @@ precmd() {
 
 setopt prompt_subst
 PROMPT=$'
- %~ $vcs_info_msg_0_=> '
+ %F{160}%~%{${reset_color}%} $vcs_info_msg_0_=> '
 

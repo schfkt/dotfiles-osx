@@ -13,7 +13,7 @@ alias gaa='git add -A'
 alias gdl='git diff HEAD~1..HEAD'
 alias gdc='git diff --cached'
 alias gpuoh='git push -u origin HEAD'
-alias gco='git branch | cut -c 3- | selecta | xargs git checkout'
+# alias gco='git branch | cut -c 3- | selecta | xargs git checkout'
 
 # misc
 alias pd="cd -"
@@ -33,12 +33,14 @@ alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
 alias tms='mux start'
 
-# ruby/rails and friends
+# ruby
 alias b='bundle'
 alias be='bundle exec'
 alias rc='be rails c'
 alias rg='be rails g'
 alias rs='be rails s'
 alias rr='be rake routes'
+
+# js
 alias cw='coffee -cbw --output . coffee'
-alias cuke='cucumber -f html -b'
+alias npm-exec='PATH=$(npm bin):$PATH'

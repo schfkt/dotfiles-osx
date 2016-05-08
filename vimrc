@@ -39,6 +39,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mattn/emmet-vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -112,6 +113,7 @@ set listchars=tab:▸\ ,trail:·
 
 " Don't show preview window with autocompletion
 set completeopt-=preview
+
 
 " ------------------------------------------------------------------------------
 " Status line
@@ -214,7 +216,10 @@ augroup configgroup
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
   " Generate tags on file save
-  autocmd BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
+  " autocmd BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
+
+  " Enable Emmet only for html files
+  autocmd FileType html EmmetInstall
 augroup END
 
 
@@ -265,6 +270,12 @@ let g:gundo_preview_bottom = 1
 
 " editorconfig-vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" emmet-vim
+let g:user_emmet_install_global = 0
+
+" NERDTree
+let g:NERDTreeShowHidden=1
 
 " ------------------------------------------------------------------------------
 " GUI specific shit
