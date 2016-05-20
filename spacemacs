@@ -33,20 +33,24 @@ values."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     syntax-checking
-     ;; version-control
-     ;; languages support
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default t)
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl
+                      version-control-global-margin t)
      markdown
      html
      yaml
      (javascript :variables
-                 javascript-disable-tern-port-files nil
                  js2-mode-show-parse-errors nil
-                 js2-mode-show-strict-warnings nil
-                 )
-     ;; other
+                 js2-mode-show-strict-warnings nil)
+     (ruby :variables
+           ruby-version-manager 'rbenv)
      eyebrowse
      restclient
+     ;; (colors :variables
+     ;;         colors-enable-rainbow-identifiers t
+     ;;         )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -271,6 +275,25 @@ you should place your code here."
 
   ;; Disable powerline separator
   (setq powerline-default-separator nil)
+
+  ;; Enable editorconfig
+  (editorconfig-mode t)
+
+  ;; Do not copy selected text into the system clipboard
+  (fset 'evil-visual-update-x-selection 'ignore)
+
+  ;; https://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (file-executable-p eslint)
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
