@@ -6,7 +6,7 @@ end
 
 branch = `git branch --list feature/* | selecta`.strip
 unless branch.empty?
-  cmd = "git merge --no-ff #{branch}"
+  cmd = "git checkout #{branch}"
   puts ">> #{cmd}"
   system cmd
 end
