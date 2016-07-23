@@ -12,8 +12,8 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
@@ -23,21 +23,14 @@ Plugin 'rking/ag.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'moll/vim-node'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-bundler'
-Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-haml'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-dispatch'
 Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'ternjs/tern_for_vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
 
@@ -154,7 +147,6 @@ highlight CursorLineNr ctermfg=12 ctermbg=7
 :command Qa qa
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>f :Ag ""<left>
@@ -187,11 +179,6 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gl :Glog --<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" ternjs
-nnoremap <leader>td :TernDef<cr>
-nnoremap <leader>tr :TernRename<cr>
-nnoremap <leader>tR :TernRefs<cr>
-
 " Bye bye ex mode
 nnoremap Q <nop>
 
@@ -214,9 +201,6 @@ augroup configgroup
 
   " Disable automatic comment insertion
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
-  " Generate tags on file save
-  " autocmd BufWritePost *.js,*.rb silent! Start! ctags 2> /dev/null
 
   " Enable Emmet only for html files
   autocmd FileType html EmmetInstall
@@ -259,10 +243,6 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_auto_jump = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = []
-
-" vim-slime
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": ":2"}
 
 " gundo.vim
 let g:gundo_right = 1
