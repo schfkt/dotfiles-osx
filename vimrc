@@ -33,6 +33,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'jnurmine/Zenburn'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -129,11 +130,11 @@ set statusline+=%<%P                         " file position
 " ------------------------------------------------------------------------------
 
 set t_Co=256
-colorscheme solarized
-set bg=light
-highlight ColorColumn ctermbg=7
+colorscheme zenburn
+set bg=dark
+highlight ColorColumn ctermbg=235
 highlight clear SignColumn
-highlight CursorLineNr ctermfg=12 ctermbg=7
+highlight CursorLineNr ctermfg=12 ctermbg=235
 
 
 " ------------------------------------------------------------------------------
@@ -212,7 +213,7 @@ augroup END
 " ------------------------------------------------------------------------------
 
 " vim-airline theme settings
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'zenburn'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
