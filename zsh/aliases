@@ -39,6 +39,7 @@ alias rc='be rails c'
 alias rg='be rails g'
 alias rs='be rails s'
 alias rr='be rake routes'
+alias rrg='rr | grep'
 
 # js
 alias cw='coffee -cbw --output . coffee'
