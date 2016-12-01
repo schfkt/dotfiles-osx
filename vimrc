@@ -148,7 +148,7 @@ highlight CursorLineNr ctermfg=12 ctermbg=235
 :command Qa qa
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>p :CtrlPBuffer<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>f :Ag ""<left>
 nnoremap <Leader>w :w<CR>
@@ -221,7 +221,7 @@ let g:airline_right_sep=''
 set ttimeoutlen=50
 
 " CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path = 0
 
