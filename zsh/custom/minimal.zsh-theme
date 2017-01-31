@@ -10,5 +10,5 @@ setopt prompt_subst
 PROMPT=$'
 
  %~ [%D %*] $vcs_info_msg_0_
- > '
+ %# '
 

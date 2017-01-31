@@ -13,6 +13,7 @@ alias gaa='git add -A'
 alias gdl='git diff HEAD~1..HEAD'
 alias gdc='git diff --cached'
 alias gpuoh='git push -u origin HEAD'
+alias gap='git add -p'
 
 # misc
 alias pd="cd -"
@@ -30,7 +31,7 @@ alias tls='tmux ls'
 alias ta='tmux attach-session -t'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
-alias tms='mux start'
+alias tms='tmuxinator start'
 
 # ruby
 alias b='bundle'

@@ -261,8 +261,10 @@ let g:NERDTreeShowHidden=1
 " ------------------------------------------------------------------------------
 " GUI specific shit
 " ------------------------------------------------------------------------------
+
 if has('gui_running')
-  set guifont=Monaco:h13
+  " Font
+  set guifont=Monospace\ 11
 
   " Turn off all GUI shit (menu bar, scrollbars, etc)
   set guioptions=
