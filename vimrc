@@ -34,6 +34,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jnurmine/Zenburn'
+Plugin 'leafgarland/typescript-vim'
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 

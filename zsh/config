@@ -13,6 +13,9 @@ DISABLE_CORRECTION="true"
 ZSH_CUSTOM=~/dotfiles/zsh/custom
 source $ZSH/oh-my-zsh.sh
 
+# disable some of oh-my-zsh shits
+unset command_not_found_handler
+
 # zsh-syntax-highlighting
 source ~/dotfiles/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)

@@ -14,6 +14,7 @@ alias gdl='git diff HEAD~1..HEAD'
 alias gdc='git diff --cached'
 alias gpuoh='git push -u origin HEAD'
 alias gap='git add -p'
+alias gc='git commit -v'
 
 # misc
 alias pd="cd -"
@@ -22,9 +23,10 @@ alias vg='vagrant'
 alias ll='ls -lh'
 alias gs='false'
 alias tailf='tail -f'
+alias vim='vimx'
 alias v='vim'
-alias m='mvim'
 alias gtypist='LANG=C gtypist'
+alias ports='netstat -tulanp'
 
 # tmux
 alias tls='tmux ls'
@@ -46,3 +48,4 @@ alias rrg='rr | grep'
 alias cw='coffee -cbw --output . coffee'
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias nr='npm run'
+alias ne='npm-exec'
