@@ -15,6 +15,7 @@ alias gdc='git diff --cached'
 alias gpuoh='git push -u origin HEAD'
 alias gap='git add -p'
 alias gc='git commit -v'
+alias t='tig'
 
 # misc
 alias pd="cd -"
