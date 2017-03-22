@@ -1,3 +1,7 @@
+# Change the default commit binding
+bind status C none
+bind status C !git commit -v
+
 # Amend last commit
 bind status + !git commit --amend
 
